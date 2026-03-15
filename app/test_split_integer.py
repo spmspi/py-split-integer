@@ -3,21 +3,19 @@ import pytest
 
 
 @pytest.mark.parametrize(
-    "value, number_of_parts, expected",
+    "value, number_of_parts",
     [
-        (8, 1, [8]),
-        (6, 2, [3, 3]),
-        (17, 4, [4, 4, 4, 5]),
-        (32, 6, [5, 5, 5, 5, 6, 6]),
-        (2, 5, [0, 0, 0, 1, 1])
+        (8, 1),
+        (6, 2),
+        (17, 4),
+        (32, 6),
+        (2, 5)
     ]
 )
 def test_sum_of_the_parts_should_be_equal_to_value(
         value: int,
-        number_of_parts: int,
-        expected: list) -> None:
-    result = split_integer(value, number_of_parts)
-    assert sum(result) == value
+        number_of_parts: int) -> None:
+    assert sum(split_integer(value, number_of_parts)) == value
 
 
 def test_should_split_into_equal_parts_when_value_divisible_by_parts() -> None:
